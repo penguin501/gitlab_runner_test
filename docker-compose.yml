@@ -21,11 +21,14 @@ services:
         privileged: true
     gitlab-runner:
         image: gitlab/gitlab-runner:latest
+        build:
+            context: ./
+            dockerfile: Dockerfile
         restart: always
         container_name: gitlab-runner
         volumes:
             - ./srv/gitlab-runner/config:/etc/gitlab-runner:z
-            - /var/run/docker.sock:/var/run/docker.sock
+            - /var/run/docker.sock:/var/run/docker.sock:z
         depends_on:
             - gitlab
         extra_hosts:
