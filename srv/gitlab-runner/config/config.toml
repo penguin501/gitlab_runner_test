@@ -8,7 +8,19 @@ check_interval = 0
   name = "c921e93d7700"
   url = "http://172.16.238.2:10080"
   token = "sW2kTnxzrRnUNysyx63K"
-  executor = "shell"
+  executor = "docker"
+  clone_url = "http://172.16.238.2:10080"
+  [runners.docker]
+    tls_verify = false
+    image = "arcatdmz/docker-compose-git"
+    privileged = true
+    disable_entrypoint_overwrite = false
+    oom_kill_disable = false
+    disable_cache = false
+    volumes = ["/cache","/var/run/docker.sock:/var/run/docker.sock:rw"]
+    shm_size = 0
+    network_mode = "gitlab_gitlab_net"
+    pull_policy = "if-not-present"
   [runners.custom_build_dir]
   [runners.cache]
     [runners.cache.s3]
