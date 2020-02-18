@@ -12,7 +12,7 @@ check_interval = 0
   clone_url = "http://172.16.238.2:10080"
   [runners.docker]
     tls_verify = false
-    image = "arcatdmz/docker-compose-git"
+    image = "docker:latest"
     privileged = true
     disable_entrypoint_overwrite = false
     oom_kill_disable = false
