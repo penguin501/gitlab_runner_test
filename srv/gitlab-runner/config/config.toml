@@ -11,6 +11,7 @@ check_interval = 0
   executor = "docker"
   clone_url = "http://172.16.238.2:10080"
   [runners.docker]
+    memory_limit = 3GB
     tls_verify = false
     image = "docker:latest"
     privileged = true
