@@ -2,6 +2,33 @@
 
 `docker-compose up -d`
 
+
+### windows setting
+
+gitlabのマウントポイントはLinux通りにマウントすると  
+アクセス出来ないエラーで死ぬ
+```yaml
+        volumes:
+            - ./srv/gitlab/config:/etc/gitlab:z
+            - ./srv/gitlab/logs:/var/log/gitlab:z
+            - ./srv/gitlab/data:/var/opt/gitlab:z
+```
+
+volumeを作成するまたはマウントポイントをズラす事で回避できる
+```dos
+docker volume create gitlab_log
+docker volume create gitlab_opt
+docker volume create gitlab-runner_config
+```
+```yaml
+        volumes:
+            - ./srv/gitlab/config:/etc/gitlab:z
+            - gitlab_log:/var/log/gitlab:z
+            - gitlab_opt:/var/opt/gitlab:z
+```
+
+https://gitlab.com/gitlab-org/omnibus-gitlab/issues/2280
+
 ### gitlab setting
 
 http://localhost:10080 にアクセスしてプロジェクト作成
