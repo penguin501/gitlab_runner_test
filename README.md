@@ -25,6 +25,10 @@ docker volume create gitlab-runner_config
             - ./srv/gitlab/config:/etc/gitlab:z
             - gitlab_log:/var/log/gitlab:z
             - gitlab_opt:/var/opt/gitlab:z
+~~略~~
+volumes:
+    gitlab_log:
+    gitlab_opt:
 ```
 
 https://gitlab.com/gitlab-org/omnibus-gitlab/issues/2280
